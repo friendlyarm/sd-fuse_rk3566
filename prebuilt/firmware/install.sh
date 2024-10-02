@@ -3,10 +3,12 @@ set -eu
 ROOTFS_DIR=$1
 CURRPATH=$PWD
 
-if [ -e "$ROOTFS_DIR/lib/firmware" ]; then
-	LIBFIRMWARE="$(readlink -f $ROOTFS_DIR/lib/firmware)"
-elif [ -e "$ROOTFS_DIR/usr/lib/firmware" ]; then
-	LIBFIRMWARE="$(readlink -f $ROOTFS_DIR/usr/lib/firmware)"
+if [ -d "$ROOTFS_DIR/lib" ]; then
+    mkdir -p $ROOTFS_DIR/lib/firmware
+    LIBFIRMWARE="$(readlink -f $ROOTFS_DIR/lib/firmware)"
+else
+    mkdir -p $ROOTFS_DIR/usr/lib/firmware
+    LIBFIRMWARE="$(readlink -f $ROOTFS_DIR/usr/lib/firmware)"
 fi
 
 (cd $ROOTFS_DIR && {
