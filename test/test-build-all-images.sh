@@ -17,8 +17,8 @@ cd sd-fuse
 wget --no-proxy http://${HTTP_SERVER}/dvdfiles/RK3566/images-for-eflasher/openmediavault-arm64-images.tgz
 tar xzf openmediavault-arm64-images.tgz
 
-wget --no-proxy http://${HTTP_SERVER}/dvdfiles/RK3566/images-for-eflasher/debian-bookworm-core-arm64-images.tgz
-tar xzf debian-bookworm-core-arm64-images.tgz
+wget --no-proxy http://${HTTP_SERVER}/dvdfiles/RK3566/images-for-eflasher/debian-trixie-core-arm64-images.tgz
+tar xzf debian-trixie-core-arm64-images.tgz
 
 wget --no-proxy http://${HTTP_SERVER}/dvdfiles/RK3566/images-for-eflasher/friendlywrt23-images.tgz
 tar xzf friendlywrt23-images.tgz
@@ -50,7 +50,7 @@ tar xzf emmc-flasher-images.tgz
 ./mk-sd-image.sh openmediavault-arm64
 ./mk-emmc-image.sh openmediavault-arm64 autostart=yes
 
-./mk-sd-image.sh debian-bookworm-core-arm64
-./mk-emmc-image.sh debian-bookworm-core-arm64 autostart=yes
+./mk-sd-image.sh debian-trixie-core-arm64
+./mk-emmc-image.sh debian-trixie-core-arm64 autostart=yes
 
 echo "done."

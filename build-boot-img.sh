@@ -3,8 +3,8 @@
 if [ $# -lt 2 ]; then
 	echo "Usage: $0 <boot dir> <img filename>"
     echo "example:"
-    echo "    tar xvzf NETDISK/rk3566/rootfs/rootfs-debian-bookworm-core-arm64-20190603.tgz"
-    echo "    ./build-boot-img.sh debian-bookworm-core-arm64/boot debian-bookworm-core-arm64/boot.img"
+    echo "    tar xvzf NETDISK/rk3566/rootfs/rootfs-debian-trixie-core-arm64-20190603.tgz"
+    echo "    ./build-boot-img.sh debian-trixie-core-arm64/boot debian-trixie-core-arm64/boot.img"
     exit 1
 fi
 TOPPATH=$PWD

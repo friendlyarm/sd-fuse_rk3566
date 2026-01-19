@@ -87,7 +87,7 @@ gen_eflasher_conf()
     if [ ${3} = "yes" ]; then
         AutoFlashOSName=${2}
     fi
-	OSNamesMergeWithComma="friendlywr21,friendlywr23,friendlywr21-docker,friendlywr23-docker,openmediavault-arm64,ubuntu-noble-core-arm64,debian-bookworm-core-arm64"
+	OSNamesMergeWithComma="friendlywr21,friendlywr23,friendlywr21-docker,friendlywr23-docker,openmediavault-arm64,ubuntu-noble-core-arm64,debian-trixie-core-arm64"
 	cat > ${1}/eflasher.conf <<EOL
 ; This is the eFlasher configuration file.
 ; See http://wiki.friendlyarm.com/wiki/index.php/EFlasher for detailed information.

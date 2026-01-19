@@ -1,2 +1,2 @@
 #!/bin/bash
-SUPPORTED_OS="openmediavault-arm64|alpine-linux-arm64|arch-linux-arm64|debian-bookworm-core-arm64|friendlywrt23|friendlywrt23-docker|friendlywrt24|friendlywrt24-docker|friendlywrt21|friendlywrt21-docker"
+SUPPORTED_OS="openmediavault-arm64|alpine-linux-arm64|arch-linux-arm64|debian-trixie-core-arm64|debian-bookworm-core-arm64|friendlywrt23|friendlywrt23-docker|friendlywrt24|friendlywrt24-docker|friendlywrt21|friendlywrt21-docker"

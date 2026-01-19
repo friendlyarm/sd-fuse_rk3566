@@ -15,11 +15,11 @@ sudo rm -rf tmp/*
 cd tmp
 git clone ../../.git sd-fuse
 cd sd-fuse
-if [ -f ../../debian-bookworm-core-arm64-images.tgz ]; then
-	tar xvzf ../../debian-bookworm-core-arm64-images.tgz
+if [ -f ../../debian-trixie-core-arm64-images.tgz ]; then
+	tar xvzf ../../debian-trixie-core-arm64-images.tgz
 else
-	wget --no-proxy http://${HTTP_SERVER}/dvdfiles/RK3566/images-for-eflasher/debian-bookworm-core-arm64-images.tgz
-    tar xvzf debian-bookworm-core-arm64-images.tgz
+	wget --no-proxy http://${HTTP_SERVER}/dvdfiles/RK3566/images-for-eflasher/debian-trixie-core-arm64-images.tgz
+    tar xvzf debian-trixie-core-arm64-images.tgz
 fi
 
 if [ -f ../../kernel-rk3566.tgz ]; then
@@ -28,4 +28,4 @@ else
 	git clone ${KERNEL_URL} --depth 1 -b ${KERNEL_BRANCH} kernel-rk3566
 fi
 
-MK_HEADERS_DEB=1 BUILD_THIRD_PARTY_DRIVER=0 KERNEL_SRC=$PWD/kernel-rk3566 ./build-kernel.sh debian-bookworm-core-arm64
+MK_HEADERS_DEB=1 BUILD_THIRD_PARTY_DRIVER=0 KERNEL_SRC=$PWD/kernel-rk3566 ./build-kernel.sh debian-trixie-core-arm64

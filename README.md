@@ -23,7 +23,7 @@ For other kernel versions, please switch to the related git branch.
 ## Target board OS Supported
 *Notes: The OS name is the same as the directory name, it is written in the script so it cannot be renamed.*
 
-* debian-bookworm-core-arm64
+* debian-trixie-core-arm64
 * ubuntu-noble-core-arm64
 * debian-bullseye-desktop-arm64
 * debian-bullseye-minimal-arm64
@@ -43,7 +43,7 @@ For other kernel versions, please switch to the related git branch.
   
 To build an SD card image for debian-bookworm, for example like this:
 ```
-./mk-sd-image.sh debian-bookworm-core-arm64
+./mk-sd-image.sh debian-trixie-core-arm64
 ```
   
 ## Where to download files
@@ -71,28 +71,28 @@ Clone this repository locally, then download and uncompress the [pre-built image
 ```
 git clone https://github.com/friendlyarm/sd-fuse_rk3566 -b kernel-6.1.y --single-branch sd-fuse_rk3566-kernel6.1
 cd sd-fuse_rk3566-kernel6.1
-wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-bookworm-core-arm64-images.tgz
-tar xvzf debian-bookworm-core-arm64-images.tgz
+wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-trixie-core-arm64-images.tgz
+tar xvzf debian-trixie-core-arm64-images.tgz
 ```
-After decompressing, you will get a directory named debian-bookworm-core-arm64, you can change the files in the directory as needed, for example, replace rootfs.img with your own modified version, or your own compiled kernel and uboot, finally, flash the image to the SD card by entering the following command (The below steps assume your SD card is device /dev/sdX):
+After decompressing, you will get a directory named debian-trixie-core-arm64, you can change the files in the directory as needed, for example, replace rootfs.img with your own modified version, or your own compiled kernel and uboot, finally, flash the image to the SD card by entering the following command (The below steps assume your SD card is device /dev/sdX):
 ```
-sudo ./fusing.sh /dev/sdX debian-bookworm-core-arm64
+sudo ./fusing.sh /dev/sdX debian-trixie-core-arm64
 ```
 Or, package it as an SD card image file:
 ```
-./mk-sd-image.sh debian-bookworm-core-arm64
+./mk-sd-image.sh debian-trixie-core-arm64
 ```
 The following flashable image file will be generated, it is now ready to be used to boot the device into debian-bookworm:  
 ```
-out/rk3566-sd-debian-bookworm-core-6.1-arm64-YYYYMMDD.img
+out/rk3566-sd-debian-trixie-core-6.1-arm64-YYYYMMDD.img
 ```
 
 #### Create an SD card image that does not use OverlayFS
 The following command will create an SD card image with OverlayFS disabled:
 ```
-cp prebuilt/parameter-plain.txt debian-bookworm-core-arm64/parameter.txt
-cp prebuilt/dtbo-plain.img debian-bookworm-core-arm64/dtbo.img
-./mk-sd-image.sh debian-bookworm-core-arm64
+cp prebuilt/parameter-plain.txt debian-trixie-core-arm64/parameter.txt
+cp prebuilt/dtbo-plain.img debian-trixie-core-arm64/dtbo.img
+./mk-sd-image.sh debian-trixie-core-arm64
 ```
 The benefits of disabling OverlayFS are as follows:  
 * Docker can choose a file system type with better performance
@@ -104,18 +104,18 @@ Clone this repository locally, then download and uncompress the [pre-built image
 ```
 git clone https://github.com/friendlyarm/sd-fuse_rk3566 -b kernel-6.1.y --single-branch sd-fuse_rk3566-kernel6.1
 cd sd-fuse_rk3566-kernel6.1
-wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-bookworm-core-arm64-images.tgz
-tar xvzf debian-bookworm-core-arm64-images.tgz
+wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-trixie-core-arm64-images.tgz
+tar xvzf debian-trixie-core-arm64-images.tgz
 wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/emmc-flasher-images.tgz
 tar xvzf emmc-flasher-images.tgz
 ```
 Then use the following command to build the SD-to-eMMC image, the autostart=yes parameter means it will automatically enter the flash process when booting:
 ```
-./mk-emmc-image.sh debian-bookworm-core-arm64 autostart=yes
+./mk-emmc-image.sh debian-trixie-core-arm64 autostart=yes
 ```
 The following flashable image file will be generated, ready to be used to boot the device into eflasher system and then flash debian-bookworm system to eMMC: 
 ```
-out/rk3566-eflasher-debian-bookworm-core-6.1-arm64-YYYYMMDD.img
+out/rk3566-eflasher-debian-trixie-core-6.1-arm64-YYYYMMDD.img
 ```
 ### Backup rootfs and create custom SD image (to burn your application into other boards)
 #### Backup rootfs
@@ -135,35 +135,35 @@ Clone this repository locally, then download and uncompress the [pre-built image
 ```
 git clone https://github.com/friendlyarm/sd-fuse_rk3566 -b kernel-6.1.y --single-branch sd-fuse_rk3566-kernel6.1
 cd sd-fuse_rk3566-kernel6.1
-wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-bookworm-core-arm64-images.tgz
-tar xvzf debian-bookworm-core-arm64-images.tgz
+wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-trixie-core-arm64-images.tgz
+tar xvzf debian-trixie-core-arm64-images.tgz
 ```
 Extract the rootfs.tar.gz exported in the previous section, the tar command requires root privileges, so you need put sudo in front of the command:
 ```
-mkdir debian-bookworm-core-arm64/rootfs
-./tools/extract-rootfs-tar.sh rootfs.tar.gz debian-bookworm-core-arm64/rootfs
+mkdir debian-trixie-core-arm64/rootfs
+./tools/extract-rootfs-tar.sh rootfs.tar.gz debian-trixie-core-arm64/rootfs
 ```
 or download the filesystem archive from the following URL and extract it:
 ```
-wget http://112.124.9.243/dvdfiles/rk3566/rootfs/rootfs-debian-bookworm-core-arm64.tgz
-./tools/extract-rootfs-tar.sh rootfs-debian-bookworm-core-arm64.tgz
+wget http://112.124.9.243/dvdfiles/rk3566/rootfs/rootfs-debian-trixie-core-arm64.tgz
+./tools/extract-rootfs-tar.sh rootfs-debian-trixie-core-arm64.tgz
 ```
 Make rootfs to img:
 ```
-sudo ./build-rootfs-img.sh debian-bookworm-core-arm64/rootfs debian-bookworm-core-arm64
+sudo ./build-rootfs-img.sh debian-trixie-core-arm64/rootfs debian-trixie-core-arm64
 ```
 Use the new rootfs.img to build SD card image:
 ```
-./mk-sd-image.sh debian-bookworm-core-arm64
+./mk-sd-image.sh debian-trixie-core-arm64
 ```
 Or build SD-to-eMMC image:
 ```
-./mk-emmc-image.sh debian-bookworm-core-arm64 autostart=yes
+./mk-emmc-image.sh debian-trixie-core-arm64 autostart=yes
 ```
 If the image path is too big to pack, you can use the RAW_SIZE_MB environment variable to set a new image size. for example, you can set it to 16GB:
 ```
-RAW_SIZE_MB=16000 ./mk-sd-image.sh debian-bookworm-core-arm64
-RAW_SIZE_MB=16000 ./mk-emmc-image.sh debian-bookworm-core-arm64
+RAW_SIZE_MB=16000 ./mk-sd-image.sh debian-trixie-core-arm64
+RAW_SIZE_MB=16000 ./mk-emmc-image.sh debian-trixie-core-arm64
 ```
 
 #### Using BTRFS as your root filesystem
@@ -177,13 +177,13 @@ The following command will create an SD card image with BTRFS root filesystem:
 ```
 git clone https://github.com/friendlyarm/sd-fuse_rk3566 -b kernel-6.1.y --single-branch sd-fuse_rk3566-kernel6.1
 cd sd-fuse_rk3566-kernel6.1
-wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-bookworm-core-arm64-images.tgz
-tar xvzf debian-bookworm-core-arm64-images.tgz
-wget http://112.124.9.243/dvdfiles/rk3566/rootfs/rootfs-debian-bookworm-core-arm64.tgz
-./tools/extract-rootfs-tar.sh rootfs-debian-bookworm-core-arm64.tgz
-sudo -E FS_TYPE=btrfs ./build-rootfs-img.sh debian-bookworm-core-arm64/rootfs \
-    debian-bookworm-core-arm64
-./mk-sd-image.sh debian-bookworm-core-arm64
+wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-trixie-core-arm64-images.tgz
+tar xvzf debian-trixie-core-arm64-images.tgz
+wget http://112.124.9.243/dvdfiles/rk3566/rootfs/rootfs-debian-trixie-core-arm64.tgz
+./tools/extract-rootfs-tar.sh rootfs-debian-trixie-core-arm64.tgz
+sudo -E FS_TYPE=btrfs ./build-rootfs-img.sh debian-trixie-core-arm64/rootfs \
+    debian-trixie-core-arm64
+./mk-sd-image.sh debian-trixie-core-arm64
 ```
 
 ### Compiling the Kernel
@@ -192,8 +192,8 @@ Clone this repository locally, then download and uncompress the [pre-built image
 ```
 git clone https://github.com/friendlyarm/sd-fuse_rk3566 -b kernel-6.1.y --single-branch sd-fuse_rk3566-kernel6.1
 cd sd-fuse_rk3566-kernel6.1
-wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-bookworm-core-arm64-images.tgz
-tar xvzf debian-bookworm-core-arm64-images.tgz
+wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-trixie-core-arm64-images.tgz
+tar xvzf debian-trixie-core-arm64-images.tgz
 ```
 Download the kernel source code from github:
 ```
@@ -216,13 +216,13 @@ cd -
 ```
 To compile the kernel, use the environment variables KERNEL_SRC and KCFG to set the source code folder and the defconfig file:
 ```
-KERNEL_SRC=kernel KCFG=my_defconfig ./build-kernel.sh debian-bookworm-core-arm64
+KERNEL_SRC=kernel KCFG=my_defconfig ./build-kernel.sh debian-trixie-core-arm64
 ```
 
 #### Compiling the kernel headers only
 Set the environment variable MK_HEADERS_DEB to 1, which will compile the kernel headers:
 ```
-MK_HEADERS_DEB=1 ./build-kernel.sh debian-bookworm-core-arm64
+MK_HEADERS_DEB=1 ./build-kernel.sh debian-trixie-core-arm64
 ```
 #### Environment Variables
 * KERNEL_SRC is used to specify the local kernel source code dir.
@@ -236,13 +236,13 @@ Clone this repository locally, then download and uncompress the [pre-built image
 ```
 git clone https://github.com/friendlyarm/sd-fuse_rk3566 -b kernel-6.1.y --single-branch sd-fuse_rk3566-kernel6.1
 cd sd-fuse_rk3566-kernel6.1
-wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-bookworm-core-arm64-images.tgz
-tar xvzf debian-bookworm-core-arm64-images.tgz
+wget http://112.124.9.243/dvdfiles/rk3566/images-for-eflasher/debian-trixie-core-arm64-images.tgz
+tar xvzf debian-trixie-core-arm64-images.tgz
 ```
 Download the u-boot source code from github that matches the OS version, the environment variable UBOOT_SRC is used to specify the local source code directory:
 ```
 git clone https://github.com/friendlyarm/uboot-rockchip -b nanopi5-v2017.09 --depth 1 uboot
-UBOOT_SRC=uboot ./build-uboot.sh debian-bookworm-core-arm64
+UBOOT_SRC=uboot ./build-uboot.sh debian-trixie-core-arm64
 ```
 ### Common Issues and Solutions
 * Unable to boot after creating rootfs (Solution: The file permissions in the file system might be corrupted. Make sure to use the tools/extract-rootfs-tar.sh script to extract rootfs, and use the -cpzf options with the tar command for packaging.)
