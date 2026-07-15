@@ -90,7 +90,7 @@ gen_eflasher_conf()
 	OSNamesMergeWithComma="friendlywr21,friendlywr23,friendlywr21-docker,friendlywr23-docker,openmediavault-arm64,ubuntu-noble-core-arm64,debian-trixie-core-arm64"
 	cat > ${1}/eflasher.conf <<EOL
 ; This is the eFlasher configuration file.
-; See http://wiki.friendlyarm.com/wiki/index.php/EFlasher for detailed information.
+; See https://wiki.friendlyelec.com/wiki/index.php/EFlasher for detailed information.
 
 [General]
 ; Automate OS installation at system startup,
